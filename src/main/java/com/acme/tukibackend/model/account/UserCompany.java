@@ -12,33 +12,26 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import java.util.Date;
 @Entity
-@Table(name = "users")
+@Table(name = "UsersCompany")
 @Getter
 @Setter
-public class User extends AuditModel {
-
+public class UserCompany extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email", nullable = false, unique = true)
-    @Email(message = "Please provide a valid e-mail")
-    @NotEmpty(message = "Please provide an e-mail")
-    private String email;
+    @Column(name = "ruc", nullable = false, unique = true)
+    @NotEmpty(message = "Please provide an Name")
+    private String name;
 
-    @Transient
-    private String password;
+    @NotEmpty(message = "Please provide your Ruc")
+    private String ruc;
 
-    @NotEmpty(message = "Please provide your first name")
-    private String firstName;
 
-    @NotEmpty(message = "Please provide your last name")
-    private String lastName;
 
-    private boolean enabled;
 
-    private String confirmationToken;
 
 
 
