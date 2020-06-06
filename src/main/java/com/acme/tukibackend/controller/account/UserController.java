@@ -39,12 +39,12 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public UserResource createTag(@Valid @RequestBody SaveUserResource resource) {
+    public UserResource createUser(@Valid @RequestBody SaveUserResource resource) {
         return convertToResource(userService.createUser(convertToEntity(resource)));
     }
 
     @PutMapping("/users/{id}")
-    public UserResource updateTag(@PathVariable(name = "id") Long tagId, @Valid @RequestBody SaveUserResource resource) {
+    public UserResource updateUser(@PathVariable(name = "id") Long tagId, @Valid @RequestBody SaveUserResource resource) {
         return convertToResource(userService.updateUser(tagId, convertToEntity(resource)));
     }
 

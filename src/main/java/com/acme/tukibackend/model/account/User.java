@@ -27,7 +27,7 @@ public class User extends AuditModel {
     @NotEmpty(message = "Please provide an e-mail")
     private String email;
 
-    @Transient
+    @NotEmpty(message = "Please provide your password")
     private String password;
 
     @NotEmpty(message = "Please provide your first name")
