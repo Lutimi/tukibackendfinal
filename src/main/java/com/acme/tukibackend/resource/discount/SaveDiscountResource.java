@@ -26,17 +26,4 @@ public class SaveDiscountResource {
     @NotBlank
     @Size(max = 250)
     private String terminos;
-
-    @NotNull
-    @NotBlank
-    private Float tukicoins;
-
-    @NotNull
-    @NotBlank
-    private Date startDate;
-
-    @NotNull
-    @NotBlank
-    private Date endDate;
-
 }

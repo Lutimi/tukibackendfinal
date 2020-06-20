@@ -11,10 +11,14 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class ChallengeResource extends AuditModel {
+
     private Long id;
     private String title;
     private String description;
     private Integer tukicoins;
-    private Double latitude;
-    private Double longitude;
+    private String address;
+    private String coordinates;
+    /*private Float latitude;
+
+    private Float longitude;*/
 }

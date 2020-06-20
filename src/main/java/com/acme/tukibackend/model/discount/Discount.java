@@ -39,10 +39,8 @@ public class Discount extends AuditModel {
     @Lob
     private String terminos;
 
-    @NotNull
-    private Float tukicoins;
+    private Integer tukicoins = 0;
 
-    @NotNull
     private Date startDate;
 
     private Date endDate;

@@ -30,14 +30,15 @@ public class ChallengeController {
         return new PageImpl<>(challenges, pageable, challengesCount);
     }
 
-    @GetMapping("/challenge/{id}")
+    @GetMapping("/challenges/{id}")
     public ChallengeResource getChallengeById(@PathVariable(name = "id") Long challengeId) {
         return convertToResource(challengeService.getChallengeById(challengeId));
     }
 
-    @PostMapping("/challenge")
-    public ChallengeResource createChallenge(@Valid @RequestBody SaveChallengeResource resource) {
-        return convertToResource(challengeService.createChallenge(convertToEntity(resource)));
+    @PostMapping("/challenges/{routeId}")
+    public ChallengeResource createChallenge(@PathVariable(name = "routeId") Long routeId,
+            @Valid @RequestBody SaveChallengeResource resource) {
+        return convertToResource(challengeService.createChallenge(routeId, convertToEntity(resource)));
     }
 
     @PutMapping("/challenges/{id}")

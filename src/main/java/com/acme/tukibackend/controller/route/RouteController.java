@@ -31,12 +31,12 @@ public class RouteController {
         return new PageImpl<>(routes, pageable, routesCount);
     }
 
-    @GetMapping("/route/{id}")
+    @GetMapping("/routes/{id}")
     public RouteResource getRouteById(@PathVariable(name = "id") Long routeId) {
         return convertToResource(routeService.getRouteById(routeId));
     }
 
-    @PostMapping("/route")
+    @PostMapping("/routes")
     public RouteResource createRoute(@Valid @RequestBody SaveRouteResource resource) {
         return convertToResource(routeService.createRoute(convertToEntity(resource)));
     }

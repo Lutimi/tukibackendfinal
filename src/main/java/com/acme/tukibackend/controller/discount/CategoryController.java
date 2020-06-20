@@ -30,12 +30,12 @@ public class CategoryController {
         return new PageImpl<>(categories, pageable, categoriesCount);
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/categories/{id}")
     public CategoryResource getCategoryById(@PathVariable(name = "id") Long categoryId) {
         return convertToResource(categoryService.getCategoryById(categoryId));
     }
 
-    @PostMapping("/category")
+    @PostMapping("/categories")
     public CategoryResource createCategory(@Valid @RequestBody SaveCategoryResource resource) {
         return convertToResource(categoryService.createCategory(convertToEntity(resource)));
     }

@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface ChallengeService {
     Page<Challenge> getAllChallenges(Pageable pageable);
     Challenge getChallengeById(Long challengeId);
-    Challenge createChallenge(Challenge challenge);
+    Challenge createChallenge(Long routeId, Challenge challenge);
     Challenge updateChallenge(Long challengeId, Challenge challengeDetails);
     }

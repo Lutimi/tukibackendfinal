@@ -12,6 +12,5 @@ public class UserResource extends AuditModel {
     private String password;
     private String firstName;
     private String lastName;
-    private boolean enabled;
-    private String confirmationToken;
+    private Integer tukicoins;
 }

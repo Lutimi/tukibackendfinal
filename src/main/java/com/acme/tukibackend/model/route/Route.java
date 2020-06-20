@@ -37,4 +37,11 @@ public class Route extends AuditModel {
     @NotNull
     @Lob
     private String content;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            mappedBy = "routes")
+
+    @JsonIgnore
+    private List<User> users;
 }

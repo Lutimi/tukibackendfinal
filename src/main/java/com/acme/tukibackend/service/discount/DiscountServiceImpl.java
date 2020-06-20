@@ -2,6 +2,7 @@ package com.acme.tukibackend.service.discount;
 
 import com.acme.tukibackend.exception.ResourceNotFoundException;
 import com.acme.tukibackend.model.discount.Discount;
+import com.acme.tukibackend.repository.discount.CategoryRepository;
 import com.acme.tukibackend.repository.discount.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,8 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Autowired
     private DiscountRepository discountRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public Discount getDiscountById(Long userId) {
@@ -26,8 +29,11 @@ public class DiscountServiceImpl implements DiscountService {
     }
 
     @Override
-    public Discount createDiscount(Discount discount) {
-        return discountRepository.save(discount);
+    public Discount createDiscount(Long categoryId, Discount discount) {
+        return categoryRepository.findById(categoryId).map(cat -> {
+            discount.setCategory(cat);
+            return discountRepository.save(discount);
+        }).orElseThrow(()-> new ResourceNotFoundException("Categort","Id", categoryId));
     }
 
     @Override

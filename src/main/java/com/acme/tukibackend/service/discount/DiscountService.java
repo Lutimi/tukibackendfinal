@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface DiscountService {
     Page<Discount> getAllDiscounts(Pageable pageable);
     Discount getDiscountById(Long discountId);
-    Discount createDiscount(Discount discountId);
+    Discount createDiscount(Long categoryId, Discount discountId);
     Discount updateDiscount(Long discountId, Discount discountDetails);
     }

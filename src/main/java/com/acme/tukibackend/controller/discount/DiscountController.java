@@ -35,9 +35,10 @@ public class DiscountController {
         return convertToResource(discountService.getDiscountById(discountId));
     }
 
-    @PostMapping("/discount")
-    public DiscountResource createDiscount(@Valid @RequestBody SaveDiscountResource resource) {
-        return convertToResource(discountService.createDiscount(convertToEntity(resource)));
+    @PostMapping("/discounts/{categoryId}")
+    public DiscountResource createDiscount(@PathVariable(name = "categoryId") Long categoryId,
+            @Valid @RequestBody SaveDiscountResource resource) {
+        return convertToResource(discountService.createDiscount(categoryId,convertToEntity(resource)));
     }
 
     @PutMapping("/discounts/{id}")

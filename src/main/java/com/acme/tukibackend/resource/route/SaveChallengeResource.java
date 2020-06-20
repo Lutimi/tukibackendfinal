@@ -21,15 +21,13 @@ public class SaveChallengeResource {
     @Size(max = 250)
     private String description;
 
-    @NotNull
-    @NotBlank
     private Integer tukicoins;
 
     @NotNull
     @NotBlank
-    private Double latitude;
+    private String address;
 
     @NotNull
     @NotBlank
-    private Double longitude;
+    private String coordinates;
 }

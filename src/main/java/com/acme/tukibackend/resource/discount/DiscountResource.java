@@ -16,7 +16,7 @@ public class DiscountResource extends AuditModel {
     private String name;
     private String description;
     private String terminos;
-    private Float tukicoins;
+    private Integer tukicoins;
     private Date startDate;
     private Date endDate;
 }
