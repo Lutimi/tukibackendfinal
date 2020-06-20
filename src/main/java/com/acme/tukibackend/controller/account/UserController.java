@@ -1,6 +1,7 @@
 package com.acme.tukibackend.controller.account;
 
 import com.acme.tukibackend.model.account.User;
+import com.acme.tukibackend.resource.account.SaveLoginResource;
 import com.acme.tukibackend.resource.account.UserResource;
 import com.acme.tukibackend.resource.account.SaveUserResource;
 import com.acme.tukibackend.service.account.UserService;
@@ -26,6 +27,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping("/login")
+    public UserResource login(@Valid @RequestBody SaveLoginResource resource) {
+        return convertToResource(userService.login(resource.getEmail(),resource.getPassword()));
+    }
+
     @GetMapping("/users")
     public Page<UserResource> getAllUsers(Pageable pageable) {
         List<UserResource> users = userService.getAllUsers(pageable).getContent().stream().map(this::convertToResource).collect(Collectors.toList());
@@ -33,12 +39,12 @@ public class UserController {
         return new PageImpl<>(users, pageable, usersCount);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public UserResource getUserById(@PathVariable(name = "id") Long userId) {
         return convertToResource(userService.getUserById(userId));
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public UserResource createUser(@Valid @RequestBody SaveUserResource resource) {
         return convertToResource(userService.createUser(convertToEntity(resource)));
     }

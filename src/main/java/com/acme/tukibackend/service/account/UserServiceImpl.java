@@ -16,9 +16,9 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User getUserById(Long userId) {
-        return userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "Id", userId));
+    public User login(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new ResourceNotFoundException(
+                "User not found with email " + email));
     }
 
     @Override
@@ -27,12 +27,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "Id", userId));
+    }
+
+    @Override
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public User updateUser(Long userId, User userDetails ) {
+    public User updateUser(Long userId, User userDetails) {
         return userRepository.findById(userId).map(user -> {
             user.setFirstName(userDetails.getFirstName());
             user.setLastName(userDetails.getLastName());

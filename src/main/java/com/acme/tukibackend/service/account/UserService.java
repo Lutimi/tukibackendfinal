@@ -6,8 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 public interface UserService {
+    User login(String email, String password);
+
     Page<User> getAllUsers(Pageable pageable);
+
     User getUserById(Long userId);
+
     User createUser(User user);
-    User updateUser(Long userId, User userDetails );
-    }
+
+    User updateUser(Long userId, User userDetails);
+}
